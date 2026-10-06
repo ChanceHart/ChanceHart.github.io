@@ -336,7 +336,7 @@ footer.site a { color: var(--smoke); }
 
       <dl class="facts-strip" aria-label="At a glance">
         <div><dt>Looking for</dt><dd>IT support, AI automation, junior security analyst</dd></div>
-        <div><dt>Strongest proof</dt><dd>Open-source tool: 24 tests, CI on 3 OSes</dd></div>
+        <div><dt>Strongest proof</dt><dd>Open-source tool: 25 tests, CI on 3 OSes</dd></div>
         <div><dt>Based in</dt><dd>Alabama, US · Central Time</dd></div>
         <div><dt>Work style</dt><dd>Remote, hybrid or on-site</dd></div>
       </dl>
@@ -424,8 +424,8 @@ footer.site a { color: var(--smoke); }
         </div>
 
         <div class="stats" aria-label="Project stats">
-          <div><b>v1.1.0</b><small>2 releases</small></div>
-          <div><b>24</b><small>unit tests</small></div>
+          <div><b>v1.1.1</b><small>3 releases</small></div>
+          <div><b>25</b><small>unit tests</small></div>
           <div><b>9 / 9</b><small>CI jobs passing</small></div>
           <div><b>3</b><small>OSes: Windows, macOS, Linux</small></div>
           <div><b>0</b><small>dependencies</small></div>
@@ -449,6 +449,7 @@ footer.site a { color: var(--smoke); }
             <ul>
               <li>Installs from GitHub in one command; tested in a clean environment</li>
               <li>Found and fixed a real bug: installed paths broke on synced folders, so I shipped a <code>--portable</code> mode in v1.1.0</li>
+              <li>Found and fixed a second bug from real use: notes scattered into subfolders when the agent changed folders. Fixed in v1.1.1 with a regression test</li>
               <li>Docs: README, changelog and a security policy</li>
             </ul>
           </div>
@@ -461,7 +462,7 @@ footer.site a { color: var(--smoke); }
 <span class="s">Installed the hook in .claude/settings.json</span>
 <span class="s">Backup of the previous settings: settings.json.bak-20261005225402</span>
 <span class="k">$</span> claude-session-saver --version
-<span class="s">claude-session-saver 1.1.0</span></code></pre>
+<span class="s">claude-session-saver 1.1.1</span></code></pre>
         </div>
       </article>
 
@@ -599,7 +600,7 @@ footer.site a { color: var(--smoke); }
             <h3>AI Automation Developer (Independent)</h3>
             <p class="org">Self-employed · Remote</p>
             <ul>
-              <li>Built and open-sourced <a href="#session-saver">claude-session-saver</a>: a Python CLI that gives Claude Code a memory, with secret redaction, 24 unit tests and GitHub Actions CI on Windows, macOS and Linux.</li>
+              <li>Built and open-sourced <a href="#session-saver">claude-session-saver</a>: a Python CLI that gives Claude Code a memory, with secret redaction, 25 unit tests and GitHub Actions CI on Windows, macOS and Linux.</li>
               <li>Connected Claude to the Shopify Admin GraphQL API through MCP; created 23 products and 9 auto-updating collections and wrote Python scripts that build the store theme.</li>
               <li>Built and shipped this portfolio on GitHub Pages: hand-coded HTML, CSS and JavaScript with a strict Content Security Policy and no trackers.</li>
             </ul>
@@ -748,7 +749,7 @@ footer.site a { color: var(--smoke); }
     projects: function () {
       return [
         '01 <a href="#work">ai-second-brain</a>       Python hook + scheduled AI reviews',
-        '02 <a href="#session-saver">claude-session-saver</a>  open source · 24 tests · CI · <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">github ↗</a>',
+        '02 <a href="#session-saver">claude-session-saver</a>  open source · 25 tests · CI · <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">github ↗</a>',
         '03 <a href="#work">store-api</a>         Claude → MCP → Shopify GraphQL API',
         '04 <a href="#work">this-site</a>             plain HTML/CSS/JS, no trackers'
       ];
@@ -757,7 +758,7 @@ footer.site a { color: var(--smoke); }
     resume: function () { return ['resume  <a href="https://chancehart.github.io/resume/" target="_blank" rel="noopener">chancehart.github.io/resume</a>  (PDF download on the page)']; },
     security: function () { return ['no cookies · no analytics · no third-party scripts', 'only personal data shown: one email address']; },
     ls: function () { return ['<span class="s">ai-second-brain/</span>  <span class="s">claude-session-saver/</span>  <span class="s">store-api/</span>  <span class="s">this-site/</span>']; },
-    github: function () { return ['<a href="https://github.com/ChanceHart" target="_blank" rel="noopener">github.com/ChanceHart</a>', 'featured: <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">claude-session-saver</a>  v1.1.0 · 24 tests · CI']; }
+    github: function () { return ['<a href="https://github.com/ChanceHart" target="_blank" rel="noopener">github.com/ChanceHart</a>', 'featured: <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">claude-session-saver</a>  v1.1.1 · 25 tests · CI']; }
   };
 
   function print(lines, cls) {
