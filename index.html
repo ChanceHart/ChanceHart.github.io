@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chance Hart</title>
+<meta name="description" content="Chance Hart: AI automation, IT support and security-minded builder. Case studies, code and contact.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://chancehart.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2300cbaa'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chancehart.github.io/">
+<meta property="og:title" content="Chance Hart: AI automation, IT support and security">
+<meta property="og:description" content="Chance Hart: AI automation, IT support and security-minded builder. Case studies, code and contact.">
+<meta property="og:image" content="https://chancehart.github.io/og-card-v4.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<style>body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Style: Twingate design system (styles.refero.design) — "midnight control room with violet and chartreuse signal lights".
+   Deliberately single dark theme. Layout: one column, max 1200px; split hero (pitch | live terminal), facts strip,
+   case studies, rules, skills, timeline, security notes, contact. Depth by tonal stacking, never drop shadows. */
+:root {
+  color-scheme: dark;
+  /* surfaces: void → obsidian → carbon → graphite; slate = violet-tinted spotlight */
+  --void: #000000;
+  --obsidian: #0e0f11;
+  --carbon: #141617;
+  --graphite: #1d2023;
+  --slate: #21223a;
+  --ash: #303438;
+  --steel: #3a3d40;
+  /* text */
+  --fog: #85868f;   /* Twingate fog (#61626b) lifted so small text passes WCAG AA on black */
+  --smoke: #8d8d96;
+  --cloud: #a1a1aa;
+  --silver: #cfcfd3;
+  --white: #ffffff;
+  /* signals */
+  --violet: #b6abff;   /* brand emphasis */
+  --wire: #eef35f;     /* single primary CTA + one headline word */
+  --teal: #00cbaa;     /* icons, prompts, diagram strokes */
+  --font-display: "Manrope", "Inter", system-ui, sans-serif;
+  --font-body: "Manrope", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --r-input: 8px;
+  --r-card: 12px;
+  --r-pill: 50px;
+  --hl: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --max: 1200px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body {
+  background: var(--void); color: var(--silver);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+::selection { background: var(--violet); color: var(--void); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: 24px; }
+@media (max-width: 480px) { .wrap { padding-inline: 16px; } }
+code, kbd { font-family: var(--font-mono); font-size: .88em; }
+kbd { border: 1px solid var(--ash); border-radius: 5px; padding: 1px 6px; background: var(--carbon); color: var(--silver); }
+
+/* Nav */
+nav.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: rgba(0, 0, 0, .78);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ash);
+}
+nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.brand { font-weight: 500; font-size: 17px; text-decoration: none; color: var(--white); letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }
+.brand i { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(0, 203, 170, .15); }
+.navlinks { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
+.navlinks a { text-decoration: none; color: var(--smoke); transition: color .15s; }
+.navlinks a:hover { color: var(--white); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 14px/1 var(--font-body); padding: 13px 20px; border-radius: var(--r-pill);
+  text-decoration: none; border: 1px solid var(--ash); background: transparent; color: var(--white); cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.btn:hover { border-color: var(--steel); background: var(--carbon); }
+.btn.primary { background: var(--wire); color: var(--void); border-color: var(--wire); }
+.btn.primary:hover { background: #f4f78a; }
+.btn.small { padding: 10px 16px; font-size: 13px; }
+@media (max-width: 760px) { .navlinks { display: none; } }
+
+/* Hero */
+.hero-bg { position: relative; overflow: hidden; }
+.hero-bg::before {
+  content: ""; position: absolute; inset: -20% -10% auto auto; width: 70%; height: 120%;
+  background: radial-gradient(closest-side, rgba(182, 171, 255, .13), transparent 72%);
+  pointer-events: none;
+}
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 85%); mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+  pointer-events: none;
+}
+.hero { position: relative; z-index: 1; padding-block: 80px 48px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero > * { min-width: 0; }
+@media (max-width: 920px) { .hero { grid-template-columns: 1fr; padding-block: 52px 36px; gap: 36px; } }
+.status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 500; color: var(--violet);
+  border: 1px solid var(--ash); background: var(--obsidian); padding: 8px 14px; border-radius: var(--r-pill);
+  box-shadow: var(--hl);
+}
+.status i { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(0, 203, 170, .15); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(0, 203, 170, .04); } }
+h1 {
+  font-family: var(--font-display); font-weight: 300; color: var(--white);
+  font-size: clamp(40px, 6vw, 68px); line-height: 1.06; letter-spacing: -0.018em;
+  margin: 24px 0 20px; text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--wire); }
+.lede { font-size: 18px; color: var(--cloud); max-width: 33em; margin: 0 0 32px; }
+.lede b { color: var(--violet); font-weight: 400; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Terminal */
+.term { background: var(--obsidian); color: var(--silver); border: 1px solid var(--ash); border-radius: var(--r-card); box-shadow: var(--hl); overflow: hidden; font: 400 13.5px/1.65 var(--font-mono); transition: border-color .2s; }
+.term:focus-within { border-color: var(--violet); }
+.term-bar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--ash); color: var(--fog); font-size: 12px; }
+.term-bar .dots { display: flex; gap: 6px; } .term-bar .dots b { width: 10px; height: 10px; border-radius: 50%; background: var(--ash); }
+.term-bar .live { margin-left: auto; color: var(--teal); }
+.term-body { padding: 16px 18px 6px; height: 330px; overflow-y: auto; overflow-wrap: anywhere; }
+.term-body p { margin: 0 0 2px; white-space: pre-wrap; }
+.term .p { color: var(--teal); }
+.term .d { color: var(--fog); }
+.term .s { color: var(--wire); }
+.term .k { color: var(--violet); }
+.term a { color: var(--violet); }
+.term-input { display: flex; align-items: center; gap: 10px; margin: 6px 12px 12px; padding: 8px 12px; background: var(--carbon); border: 1px solid var(--ash); border-radius: var(--r-input); }
+.term-input label { color: var(--teal); white-space: nowrap; }
+.term-input input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--white); font: inherit; caret-color: var(--wire); padding: 2px 0; }
+.term-input input::placeholder { color: var(--fog); }
+.term-input input:focus-visible { outline: none; }
+.term-hint { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 14px; }
+.term-hint button { font: 400 12px/1 var(--font-mono); background: transparent; color: var(--smoke); border: 1px solid var(--ash); border-radius: var(--r-pill); padding: 7px 11px; cursor: pointer; transition: color .15s, border-color .15s; }
+.term-hint button:hover { color: var(--white); border-color: var(--steel); }
+
+/* Facts strip */
+.facts-strip { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--ash); border: 1px solid var(--ash); border-radius: var(--r-card); overflow: hidden; margin: 0 0 80px; }
+.facts-strip > div { background: var(--obsidian); padding: 20px 22px; min-width: 0; }
+.facts-strip dt { font: 400 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fog); margin-bottom: 10px; }
+.facts-strip dd { margin: 0; font-weight: 500; font-size: 15px; line-height: 1.4; color: var(--white); }
+@media (max-width: 820px) { .facts-strip { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 440px) { .facts-strip { grid-template-columns: 1fr; } }
+
+/* Sections */
+section.block { padding-block: 80px; border-top: 1px solid var(--ash); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 400 12px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin: 0 0 18px; }
+h2 { font-family: var(--font-display); font-weight: 300; color: var(--white); font-size: clamp(30px, 4.2vw, 48px); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 18px; text-wrap: balance; }
+h2 em { font-style: normal; color: var(--violet); }
+.intro { color: var(--cloud); max-width: 42em; margin: 0 0 44px; font-size: 17px; }
+
+/* Case studies */
+.case { background: var(--obsidian); border: 1px solid var(--ash); border-radius: var(--r-card); box-shadow: var(--hl); padding: 36px; display: grid; gap: 30px; }
+.case.spot { background: linear-gradient(180deg, var(--slate), var(--obsidian) 55%); }
+.case + .case { margin-top: 20px; }
+@media (max-width: 600px) { .case { padding: 24px 18px; } }
+.case-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
+.case-head > div { min-width: 0; }
+.case-num { font: 400 12px/1 var(--font-mono); color: var(--fog); letter-spacing: .08em; text-transform: uppercase; }
+.case h3 { font-family: var(--font-display); color: var(--white); font-size: clamp(24px, 3vw, 32px); font-weight: 300; letter-spacing: -0.012em; margin: 10px 0 8px; line-height: 1.15; }
+.case-sub { color: var(--cloud); margin: 0; max-width: 40em; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 400 12px/1 var(--font-mono); padding: 7px 10px; border-radius: var(--r-pill); background: var(--carbon); border: 1px solid var(--ash); color: var(--violet); }
+.case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.case-grid > div { min-width: 0; }
+@media (max-width: 820px) { .case-grid { grid-template-columns: 1fr; gap: 22px; } }
+.case-grid h4 { font: 400 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--teal); margin: 0 0 12px; }
+.case-grid p, .case-grid ul { margin: 0; font-size: 15px; color: var(--silver); }
+.case-grid ul { padding-left: 18px; display: grid; gap: 7px; }
+.case-grid li::marker { color: var(--fog); }
+.case-grid b { color: var(--white); font-weight: 500; }
+.case-grid code { white-space: nowrap; color: var(--violet); }
+.case-grid a { color: var(--violet); }
+
+/* Stats row */
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--ash); border: 1px solid var(--ash); border-radius: var(--r-card); overflow: hidden; }
+.stats > div { background: var(--carbon); padding: 16px 18px; min-width: 0; }
+.stats b { display: block; font-weight: 300; font-size: 28px; color: var(--white); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.stats small { font: 400 11px/1.35 var(--font-mono); color: var(--fog); text-transform: uppercase; letter-spacing: .06em; }
+@media (max-width: 820px) { .stats { grid-template-columns: repeat(2, 1fr); } .stats > div:last-child { grid-column: 1 / -1; } }
+
+/* Pipeline */
+.pipe-wrap { overflow-x: auto; }
+.pipe { display: flex; align-items: stretch; flex-wrap: wrap; row-gap: 10px; }
+.node { border: 1px solid var(--ash); background: var(--carbon); border-radius: var(--r-input); padding: 11px 15px; min-width: 0; }
+.node b { display: block; font: 500 14px/1.3 var(--font-body); color: var(--white); }
+.node small { display: block; font: 400 12px/1.4 var(--font-mono); color: var(--smoke); }
+.node.hl { border-color: var(--violet); background: var(--slate); }
+.node.hl small { color: var(--violet); }
+.arrow { align-self: center; padding-inline: 10px; color: var(--teal); font-family: var(--font-mono); }
+.pipe-cap { font: 400 12px/1.5 var(--font-mono); color: var(--fog); margin: 12px 0 0; }
+
+/* Code */
+.code { background: var(--void); border: 1px solid var(--ash); border-radius: var(--r-card); overflow: hidden; }
+.code-bar { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--ash); font: 400 12px/1.4 var(--font-mono); color: var(--fog); flex-wrap: wrap; }
+.code-bar span:last-child, .code-bar a { color: var(--teal); }
+.code pre { margin: 0; padding: 18px; overflow-x: auto; font: 400 13px/1.7 var(--font-mono); tab-size: 4; color: var(--silver); }
+.code .k { color: var(--violet); }
+.code .s { color: var(--wire); }
+.code .f { color: var(--teal); }
+
+/* Principles */
+.principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 820px) { .principles { grid-template-columns: 1fr; } }
+.principle { background: var(--obsidian); border: 1px solid var(--ash); border-radius: var(--r-card); box-shadow: var(--hl); padding: 26px; min-width: 0; }
+.principle .n { font: 400 12px/1 var(--font-mono); color: var(--teal); }
+.principle h3 { font-family: var(--font-display); color: var(--white); font-weight: 400; font-size: 20px; margin: 14px 0 8px; letter-spacing: -0.01em; }
+.principle p { margin: 0; color: var(--cloud); font-size: 15px; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 960px) { .skills { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .skills { grid-template-columns: 1fr; } }
+.skill { background: var(--obsidian); border: 1px solid var(--ash); border-radius: var(--r-card); box-shadow: var(--hl); padding: 24px; min-width: 0; }
+.skill:first-child { background: var(--slate); }
+.skill h3 { color: var(--white); font-size: 18px; font-weight: 500; margin: 0 0 6px; letter-spacing: -0.01em; }
+.skill p { color: var(--cloud); font-size: 14px; margin: 0 0 16px; }
+.skill ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14.5px; color: var(--silver); }
+.skill li { display: flex; gap: 8px; }
+.skill li::before { content: "›"; color: var(--teal); font-family: var(--font-mono); }
+.stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.chip { font: 400 13px/1 var(--font-mono); padding: 9px 13px; border: 1px solid var(--ash); border-radius: var(--r-pill); background: var(--obsidian); color: var(--silver); }
+
+/* Timeline */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.job { display: grid; grid-template-columns: 200px 1fr; gap: 36px; padding-block: 30px; border-bottom: 1px solid var(--ash); }
+.job:first-child { padding-top: 0; }
+.job:last-child { border-bottom: 0; }
+.job > * { min-width: 0; }
+@media (max-width: 720px) { .job { grid-template-columns: 1fr; gap: 8px; } }
+.job .when { font: 400 13px/1.5 var(--font-mono); color: var(--smoke); }
+.job h3 { color: var(--white); font-size: 21px; font-weight: 400; margin: 0 0 2px; letter-spacing: -0.01em; }
+.job .org { color: var(--smoke); margin: 0 0 14px; font-size: 15px; }
+.job ul { margin: 0; padding-left: 18px; display: grid; gap: 7px; font-size: 15.5px; }
+.job li::marker { color: var(--fog); }
+.job .why { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0 0; font-size: 14px; color: var(--cloud); }
+.job .why b { font: 400 11px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--violet); border: 1px solid var(--ash); background: var(--carbon); padding: 5px 9px; border-radius: var(--r-pill); }
+
+/* Security notes */
+.sec { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 960px) { .sec { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .sec { grid-template-columns: 1fr; } }
+.sec div { border: 1px solid var(--ash); border-radius: var(--r-card); padding: 22px; background: var(--obsidian); box-shadow: var(--hl); min-width: 0; }
+.sec svg { width: 22px; height: 22px; stroke: var(--teal); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 14px; }
+.sec b { display: block; color: var(--white); font-weight: 500; font-size: 15px; margin-bottom: 6px; }
+.sec span { color: var(--cloud); font-size: 14px; }
+
+/* Contact */
+.contact { background: linear-gradient(135deg, var(--slate), var(--obsidian) 70%); border: 1px solid var(--ash); box-shadow: var(--hl); border-radius: 16px; padding: 52px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; }
+.contact > * { min-width: 0; }
+@media (max-width: 820px) { .contact { grid-template-columns: 1fr; padding: 32px 22px; } }
+.contact p { color: var(--cloud); margin: 0; }
+.mailbox { background: var(--void); border: 1px solid var(--ash); border-radius: var(--r-card); padding: 20px; display: grid; gap: 14px; }
+.mailbox .mb-label { font: 400 11px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--fog); }
+.mailbox .addr { font: 400 clamp(15px, 2.4vw, 18px)/1.3 var(--font-mono); color: var(--white); user-select: all; overflow-wrap: anywhere; }
+.mailbox .row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+footer.site { padding-block: 36px 52px; color: var(--fog); font-size: 13px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--ash); margin-top: 80px; }
+footer.site a { color: var(--smoke); }
+</style>
+
+</head>
+<body>
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top"><i aria-hidden="true"></i>Chance Hart</a>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#security">Security</a>
+      <a href="https://chancehart.github.io/resume/" target="_blank" rel="noopener">Resume ↗</a>
+    </div>
+    <a class="btn small" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
+  <div class="hero-bg">
+    <div class="wrap">
+      <header class="hero">
+        <div>
+          <span class="status"><i aria-hidden="true"></i> Open to IT, AI and cybersecurity roles</span>
+          <h1>I build with AI and keep systems <em>secure</em>.</h1>
+          <p class="lede">I'm Chance Hart. I use <b>Claude Code</b> every day to build automations, connect tools through APIs and ship working software. Before that I fixed problems in the field and handled <b>sensitive client data</b>. I know how to make a careful fix and how to explain it.</p>
+          <div class="cta">
+            <a class="btn primary" href="#work">See my work</a>
+            <a class="btn" href="https://www.linkedin.com/in/chance-hart-ai" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <div class="term" id="term">
+          <div class="term-bar"><span class="dots" aria-hidden="true"><b></b><b></b><b></b></span><span>chance@portfolio: ~</span><span class="live">● live</span></div>
+          <div class="term-body" id="term-out" role="log" aria-live="polite">
+            <p><span class="p">$</span> whoami</p>
+            <p>Chance Hart. AI automation, IT support, security-minded.</p>
+            <p><span class="p">$</span> cat now.txt</p>
+            <p>Building tools with Claude Code: Python hooks, API integrations and scheduled AI agents.</p>
+            <p><span class="p">$</span> ls projects/</p>
+            <p><span class="s">ai-second-brain/</span>  <span class="s">claude-session-saver/</span>  <span class="s">store-api/</span>  <span class="s">this-site/</span></p>
+            <p class="d"># Type a command below, or tap one. Try: help</p>
+          </div>
+          <form class="term-input" id="term-form" autocomplete="off">
+            <label for="term-in">$</label>
+            <input id="term-in" type="text" spellcheck="false" placeholder="type help and press Enter" aria-label="Terminal command">
+          </form>
+          <div class="term-hint">
+            <button type="button" data-cmd="help">help</button>
+            <button type="button" data-cmd="skills">skills</button>
+            <button type="button" data-cmd="projects">projects</button>
+            <button type="button" data-cmd="contact">contact</button>
+          <button type="button" data-cmd="resume">resume</button>
+            <button type="button" data-cmd="sudo hire chance">sudo hire chance</button>
+          </div>
+        </div>
+      </header>
+
+      <dl class="facts-strip" aria-label="At a glance">
+        <div><dt>Looking for</dt><dd>IT support, AI automation, junior security analyst</dd></div>
+        <div><dt>Strongest proof</dt><dd>Open-source tool: 24 tests, CI on 3 OSes</dd></div>
+        <div><dt>Based in</dt><dd>Alabama, US · Central Time</dd></div>
+        <div><dt>Work style</dt><dd>Remote, hybrid or on-site</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <p class="eyebrow">Selected work</p>
+      <h2>Case studies</h2>
+      <p class="intro">Each one is a real system I built and use. Claude Code is my pair programmer: I set the goal, read the code it writes, and test until it works.</p>
+
+      <article class="case spot">
+        <div class="case-head">
+          <div>
+            <span class="case-num">Case 01 · AI agent workflow</span>
+            <h3>An AI agent that remembers every session</h3>
+            <p class="case-sub">My notes system in Obsidian, run by Claude Code. Every work session starts where the last one stopped, on any device.</p>
+          </div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Claude Code hooks</span><span class="tag">Unit tests</span><span class="tag">Open source</span></div>
+        </div>
+
+        <div class="case-grid">
+          <div>
+            <h4>Problem</h4>
+            <p>AI chats forget everything when they end. I was losing decisions and repeating context every time I started a session.</p>
+          </div>
+          <div>
+            <h4>What I built</h4>
+            <ul>
+              <li>A Python hook that runs after every AI reply and saves the session as a searchable note</li>
+              <li>A handoff file the agent updates after every decision</li>
+              <li>Weekly and monthly reviews that run on a schedule</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Decisions</h4>
+            <ul>
+              <li><b>Privacy:</b> the hook saves the conversation only. Tool output and system messages are left out.</li>
+              <li><b>Safe writes:</b> it writes to a temp file and then swaps it in, so cloud sync never picks up a half-written note.</li>
+              <li><b>Open source:</b> I published it for anyone to use. <a href="#session-saver">See Case 02</a>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pipe-wrap">
+          <div class="pipe" aria-label="System diagram">
+            <div class="node"><b>Claude Code session</b><small>PC or phone</small></div>
+            <span class="arrow" aria-hidden="true">→</span>
+            <div class="node hl"><b>Stop hook</b><small>save_session.py</small></div>
+            <span class="arrow" aria-hidden="true">→</span>
+            <div class="node"><b>Markdown transcript</b><small>Journal/Sessions/</small></div>
+            <span class="arrow" aria-hidden="true">→</span>
+            <div class="node"><b>OneDrive vault</b><small>synced to every device</small></div>
+          </div>
+          <p class="pipe-cap">Plus: scheduled AI tasks → weekly and monthly reviews written into the same vault.</p>
+        </div>
+
+        <div class="code">
+          <div class="code-bar"><span>.claude/hooks/save_session.py</span><a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">View full code on GitHub ↗</a></div>
+<pre><code><span class="k">def</span> <span class="f">main</span>():
+    payload = json.load(sys.stdin)
+    path = payload.get(<span class="s">"transcript_path"</span>)
+    ...
+            <span class="k">if</span> e.get(<span class="s">"type"</span>) <span class="k">not in</span> (<span class="s">"user"</span>, <span class="s">"assistant"</span>) <span class="k">or</span> e.get(<span class="s">"isMeta"</span>) <span class="k">or</span> e.get(<span class="s">"isSidechain"</span>):
+                <span class="k">continue</span>
+            ...
+            text = STRIP.sub(<span class="s">""</span>, text).strip()
+    ...
+    tmp = os.path.join(OUT_DIR, name + <span class="s">".tmp"</span>)
+    <span class="k">with</span> open(tmp, <span class="s">"w"</span>, encoding=<span class="s">"utf-8"</span>) <span class="k">as</span> f:
+        f.write(<span class="s">"\n"</span>.join(out))
+    os.replace(tmp, os.path.join(OUT_DIR, name))</code></pre>
+        </div>
+      </article>
+
+      <article class="case" id="session-saver">
+        <div class="case-head">
+          <div>
+            <span class="case-num">Case 02 · Open-source tool</span>
+            <h3>claude-session-saver: shipping it for everyone</h3>
+            <p class="case-sub">I turned the hook from Case 01 into a public tool anyone can install with one command, with tests, automated CI on three operating systems, and versioned releases.</p>
+          </div>
+          <div class="tags"><span class="tag">Python CLI</span><span class="tag">unittest</span><span class="tag">GitHub Actions</span><span class="tag">pip / pipx</span><span class="tag">MIT</span></div>
+        </div>
+
+        <div class="stats" aria-label="Project stats">
+          <div><b>v1.1.0</b><small>2 releases</small></div>
+          <div><b>24</b><small>unit tests</small></div>
+          <div><b>9 / 9</b><small>CI jobs passing</small></div>
+          <div><b>3</b><small>OSes: Windows, macOS, Linux</small></div>
+          <div><b>0</b><small>dependencies</small></div>
+        </div>
+
+        <div class="case-grid">
+          <div>
+            <h4>Problem</h4>
+            <p>My hook only worked in my own vault. To be useful to others it needed a real installer, safe defaults, and proof that it works on any machine.</p>
+          </div>
+          <div>
+            <h4>What I built</h4>
+            <ul>
+              <li>A CLI: <code>install</code>, <code>uninstall</code>, <code>backfill</code> (import past sessions)</li>
+              <li>An installer that merges into existing settings, keeps a backup and never duplicates itself</li>
+              <li><b>Secret redaction</b>: API keys, tokens, private keys and passwords become [REDACTED] before saving</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Result</h4>
+            <ul>
+              <li>Installs from GitHub in one command; tested in a clean environment</li>
+              <li>Found and fixed a real bug: installed paths broke on synced folders, so I shipped a <code>--portable</code> mode in v1.1.0</li>
+              <li>Docs: README, changelog and a security policy</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="code">
+          <div class="code-bar"><span>terminal · install</span><a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+<pre><code><span class="k">$</span> pipx install git+https://github.com/ChanceHart/claude-session-saver
+<span class="k">$</span> claude-session-saver install --portable
+<span class="s">Installed the hook in .claude/settings.json</span>
+<span class="s">Backup of the previous settings: settings.json.bak-20261005225402</span>
+<span class="k">$</span> claude-session-saver --version
+<span class="s">claude-session-saver 1.1.0</span></code></pre>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <span class="case-num">Case 03 · API integration + web</span>
+            <h3>Running a store through an AI agent and an API</h3>
+            <p class="case-sub">A personal e-commerce project. I connected Claude to Shopify, so the agent does the admin work through the API instead of clicking through screens.</p>
+          </div>
+          <div class="tags"><span class="tag">MCP</span><span class="tag">GraphQL</span><span class="tag">Python</span><span class="tag">Liquid / CSS / JS</span></div>
+        </div>
+
+        <div class="case-grid">
+          <div>
+            <h4>Problem</h4>
+            <p>Setting up a store by hand is slow and easy to get wrong: dozens of products, collections, tags and theme edits.</p>
+          </div>
+          <div>
+            <h4>What I built</h4>
+            <ul>
+              <li>Products and collections created through the Shopify Admin GraphQL API, using MCP</li>
+              <li>Python scripts that build and update the theme files</li>
+              <li>Store features written in Liquid, CSS and JavaScript</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Result</h4>
+            <ul>
+              <li>23 products and 9 auto-updating collections created through the API</li>
+              <li>Tested on desktop and phone, with no sideways scrolling</li>
+              <li>A product safety review applied to the whole catalog</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pipe-wrap">
+          <div class="pipe" aria-label="System diagram">
+            <div class="node"><b>Claude Code</b><small>agent</small></div>
+            <span class="arrow" aria-hidden="true">→</span>
+            <div class="node hl"><b>MCP connector</b><small>tool calls</small></div>
+            <span class="arrow" aria-hidden="true">→</span>
+            <div class="node"><b>Shopify Admin API</b><small>GraphQL</small></div>
+            <span class="arrow" aria-hidden="true">→</span>
+            <div class="node"><b>Store</b><small>products, collections, theme</small></div>
+          </div>
+          <p class="pipe-cap">Theme code: build_theme_files.py → Liquid / CSS / JS → draft theme, tested before publishing.</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <span class="case-num">Case 04 · This site</span>
+            <h3>The page you're reading</h3>
+            <p class="case-sub">Built with Claude Code: hand-written HTML, CSS and JavaScript, with no framework and no tracking. The design follows Twingate's published design system.</p>
+          </div>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Accessibility</span></div>
+        </div>
+        <div class="case-grid">
+          <div><h4>Built</h4><p>A working terminal, a layout that works on phones, and design tokens taken from a real security company's system.</p></div>
+          <div><h4>Accessible</h4><p>Keyboard friendly, with visible focus. Animation turns off if your device asks for reduced motion.</p></div>
+          <div><h4>Private</h4><p>The page sets no cookies and loads no trackers or analytics. My phone number and address are left off on purpose. <a href="#security">More below</a>.</p></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <p class="eyebrow">How I work with AI</p>
+      <h2>Three rules I follow</h2>
+      <div class="principles" style="margin-top:36px">
+        <div class="principle"><span class="n">01</span><h3>Check everything</h3><p>AI writes fast and sometimes writes wrong. I read the output, test it and only trust what works.</p></div>
+        <div class="principle"><span class="n">02</span><h3>Share less data</h3><p>I give tools only the data they need and keep personal information out of logs and public pages.</p></div>
+        <div class="principle"><span class="n">03</span><h3>Automate the repeats</h3><p>If I do something by hand twice, I write a script or schedule a task for it the third time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h2>Hands-on with AI, <em>solid on the basics</em></h2>
+      <p class="intro">I learn by building. I pick a real problem, build a fix with AI, then test it until it works. I also know how to support the people who use the systems.</p>
+
+      <div class="skills">
+        <div class="skill">
+          <h3>AI and automation</h3>
+          <p>I use AI agents to build real tools.</p>
+          <ul><li>Claude Code and AI agents</li><li>MCP tool connections</li><li>Hooks and scheduled tasks</li><li>Prompt writing and review</li></ul>
+        </div>
+        <div class="skill">
+          <h3>Building and code</h3>
+          <p>I read code and make it run.</p>
+          <ul><li>Python scripts and CLIs</li><li>Unit tests + GitHub Actions CI</li><li>HTML, CSS, JavaScript</li><li>GraphQL APIs</li></ul>
+        </div>
+        <div class="skill">
+          <h3>IT support</h3>
+          <p>I fix problems and explain them clearly.</p>
+          <ul><li>Troubleshooting</li><li>Basic IT support</li><li>Office software and data systems</li><li>Helping users by phone and in person</li></ul>
+        </div>
+        <div class="skill">
+          <h3>Data and security habits</h3>
+          <p>I've been trusted with sensitive data.</p>
+          <ul><li>Client health and financial records</li><li>Payment and deposit handling</li><li>Accurate CRM data</li><li>Sharing only the data that's needed</li></ul>
+        </div>
+      </div>
+
+      <div class="stack" aria-label="Tools I use">
+        <span class="chip">Claude Code</span><span class="chip">Claude</span><span class="chip">MCP</span><span class="chip">Python</span><span class="chip">HTML / CSS / JS</span><span class="chip">GraphQL</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">unittest</span><span class="chip">Shopify Liquid</span><span class="chip">JSON</span><span class="chip">Windows</span><span class="chip">Obsidian</span><span class="chip">CRM systems</span><span class="chip">Microsoft Office</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <p class="eyebrow">Experience</p>
+      <h2>Where I learned to fix things for people</h2>
+      <ol class="timeline" style="margin-top:40px">
+        <li class="job">
+          <div class="when">Sep 2026 – Present</div>
+          <div>
+            <h3>AI Automation Developer (Independent)</h3>
+            <p class="org">Self-employed · Remote</p>
+            <ul>
+              <li>Built and open-sourced <a href="#session-saver">claude-session-saver</a>: a Python CLI with secret redaction, 24 unit tests and CI on Windows, macOS and Linux.</li>
+              <li>Connected Claude to the Shopify Admin GraphQL API through MCP and automated a store build with Python scripts.</li>
+              <li>Designed, built and shipped this portfolio on GitHub Pages with a strict Content Security Policy.</li>
+            </ul>
+            <p class="why"><b>Relevant</b>AI automation, APIs, testing, shipping software.</p>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Sep 2026 – Present</div>
+          <div>
+            <h3>Founder</h3>
+            <p class="org">E-commerce startup · Self-employed</p>
+            <ul>
+              <li>Building an e-commerce brand with AI: brand identity, a Shopify store with 23 product listings, store policies, a financial model and an ad plan.</li>
+            </ul>
+            <p class="why"><b>Relevant</b>Ownership, planning, running systems end to end.</p>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Apr 2026 – Sep 2026</div>
+          <div>
+            <h3>Retail Associate / Marketing Specialist</h3>
+            <p class="org">Jubilee Pool &amp; Patio · Daphne, AL</p>
+            <ul>
+              <li>Worked on an AI-agent dashboard to track KPIs and automate reports for management.</li>
+              <li>Kept customer records accurate in the CRM and databases.</li>
+              <li>Managed inventory levels and stock orders in the company's systems.</li>
+              <li>Ran online marketing, including outreach, promotions and the web presence.</li>
+              <li>Processed payments and bank deposits, and fixed customer problems in person and by phone.</li>
+            </ul>
+            <p class="why"><b>Relevant</b>Data accuracy, business systems, user support.</p>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Jul 2025 – Oct 2025</div>
+          <div>
+            <h3>Life and Health Insurance Agent</h3>
+            <p class="org">Globe Life Liberty National · Mobile, AL</p>
+            <ul>
+              <li>Handled sensitive client health and financial information.</li>
+              <li>Explained complex products in plain language to individuals and families.</li>
+              <li>Managed my own pipeline, scheduling and follow-ups on my own initiative.</li>
+            </ul>
+            <p class="why"><b>Relevant</b>Handling sensitive data, clear explanations.</p>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Dec 2024 – Jul 2025</div>
+          <div>
+            <h3>General Contractor / Field Technician</h3>
+            <p class="org">Long Leaf Services LLC · Daphne, AL</p>
+            <ul>
+              <li>Found and fixed electrical, plumbing and building problems on site for homes and businesses.</li>
+              <li>Worked to safety standards and kept clients updated until each job was done.</li>
+              <li>Planned and coordinated projects to finish on time and on budget.</li>
+            </ul>
+            <p class="why"><b>Relevant</b>Troubleshooting in the field, safety discipline.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="security">
+    <div class="wrap">
+      <p class="eyebrow">Security notes</p>
+      <h2>How this site handles <em>your data</em></h2>
+      <p class="intro">I want to work in security, so I built this site the way I'd want any site built.</p>
+      <div class="sec">
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><b>No tracking</b><span>This page's code sets no cookies and loads no analytics or ad pixels.</span></div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 10l2.5 2L8 14M13 14h3"/></svg><b>No third-party scripts</b><span>All JavaScript is written inline on this page. The only outside request is for fonts.</span></div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.5 3.8-5 7-5s5.8 1.5 7 5"/><path d="M3 3l18 18"/></svg><b>Less personal data</b><span>Only my email is shown, as plain text. No phone number or home address.</span></div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><b>Nothing you type is sent</b><span>The terminal runs only in your browser. This page's code doesn't send or save what you type.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Hiring for IT, AI or <em>security</em>?</h2>
+          <p>Email me and I'll get back to you quickly.</p>
+        </div>
+        <div class="mailbox">
+          <span class="mb-label">Email</span>
+          <div class="addr" id="email">ichart0421@gmail.com</div>
+          <div class="row">
+            <button class="btn small primary" id="copy" type="button">Copy address</button>
+            <a class="btn small" href="https://www.linkedin.com/in/chance-hart-ai" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn small" href="https://chancehart.github.io/resume/" target="_blank" rel="noopener">Resume ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer class="site">
+    <span>© 2026 Chance Hart</span>
+    <span>Built with Claude Code · press <kbd>/</kbd> to open the terminal</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var EMAIL = 'ichart0421@gmail.com';
+  var out = document.getElementById('term-out');
+  var input = document.getElementById('term-in');
+
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  var cmds = {
+    help: function () {
+      return [
+        '<span class="s">whoami</span>    who I am',
+        '<span class="s">skills</span>    what I can do',
+        '<span class="s">projects</span>  case studies on this page',
+        '<span class="s">contact</span>   how to reach me',
+        '<span class="s">resume</span>    open my resume',
+        '<span class="s">github</span>    my GitHub and open-source work',
+        '<span class="s">security</span>  how this site handles data',
+        '<span class="s">clear</span>     clear the screen'
+      ];
+    },
+    whoami: function () { return ['Chance Hart. AI automation, IT support, security-minded.', 'Alabama, US · Central Time.']; },
+    skills: function () {
+      return [
+        '<span class="k">ai</span>       Claude Code, AI agents, MCP, hooks, scheduled tasks',
+        '<span class="k">code</span>     Python (basic), HTML/CSS/JS, GraphQL, JSON',
+        '<span class="k">it</span>       troubleshooting, user support, office and data systems',
+        '<span class="k">security</span> sensitive data handling, sharing only what\'s needed'
+      ];
+    },
+    projects: function () {
+      return [
+        '01 <a href="#work">ai-second-brain</a>       Python hook + scheduled AI reviews',
+        '02 <a href="#session-saver">claude-session-saver</a>  open source · 24 tests · CI · <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">github ↗</a>',
+        '03 <a href="#work">store-api</a>         Claude → MCP → Shopify GraphQL API',
+        '04 <a href="#work">this-site</a>             plain HTML/CSS/JS, no trackers'
+      ];
+    },
+    contact: function () { return ['email    <span class="s">' + EMAIL + '</span>', 'linkedin <a href="https://www.linkedin.com/in/chance-hart-ai" target="_blank" rel="noopener">linkedin.com/in/chance-hart-ai</a>']; },
+    resume: function () { return ['resume  <a href="https://chancehart.github.io/resume/" target="_blank" rel="noopener">chancehart.github.io/resume</a>  (PDF download on the page)']; },
+    security: function () { return ['no cookies · no analytics · no third-party scripts', 'only personal data shown: one email address']; },
+    ls: function () { return ['<span class="s">ai-second-brain/</span>  <span class="s">claude-session-saver/</span>  <span class="s">store-api/</span>  <span class="s">this-site/</span>']; },
+    github: function () { return ['<a href="https://github.com/ChanceHart" target="_blank" rel="noopener">github.com/ChanceHart</a>', 'featured: <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">claude-session-saver</a>  v1.1.0 · 24 tests · CI']; }
+  };
+
+  function print(lines, cls) {
+    lines.forEach(function (l) {
+      var p = document.createElement('p');
+      if (cls) p.className = cls;
+      p.innerHTML = l;
+      out.appendChild(p);
+    });
+    out.scrollTop = out.scrollHeight;
+  }
+
+  function run(raw) {
+    var cmd = raw.trim();
+    if (!cmd) return;
+    print(['<span class="p">$</span> ' + esc(cmd)]);
+    var key = cmd.toLowerCase();
+    if (key === 'clear') { out.innerHTML = ''; return; }
+    if (key.indexOf('sudo') === 0) {
+      if (key === 'sudo hire chance') { print(['<span class="k">[sudo]</span> permission granted.', 'Next step: email <span class="s">' + EMAIL + '</span>']); }
+      else { print(['nice try. this incident will be reported. (try: sudo hire chance)'], 'd'); }
+      return;
+    }
+    var fn = cmds[key.split(/\s+/)[0]];
+    if (fn) print(fn());
+    else print(['command not found: ' + esc(cmd.split(/\s+/)[0]) + '. Type help.'], 'd');
+  }
+
+  document.getElementById('term-form').addEventListener('submit', function (e) {
+    e.preventDefault(); run(input.value); input.value = '';
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-cmd]'), function (b) {
+    b.addEventListener('click', function () { run(b.getAttribute('data-cmd')); });
+  });
+  document.addEventListener('keydown', function (e) {
+    var t = e.target.tagName;
+    if (e.key === '/' && t !== 'INPUT' && t !== 'TEXTAREA') {
+      e.preventDefault();
+      document.getElementById('term').scrollIntoView({ block: 'center' });
+      input.focus({ preventScroll: true });
+    }
+  });
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var btn = this, addr = document.getElementById('email');
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy address'; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(addr);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      done('Selected. Press Ctrl+C');
+    }
+    try { navigator.clipboard.writeText(EMAIL).then(function () { done('Copied'); }, fallback); }
+    catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
