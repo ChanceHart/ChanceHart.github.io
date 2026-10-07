@@ -216,6 +216,7 @@ h2 em { font-style: normal; color: var(--violet); }
 .code .k { color: var(--violet); }
 .code .s { color: var(--wire); }
 .code .f { color: var(--teal); }
+    .code .d { color: var(--fog); }
 
 /* Principles */
 .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -316,7 +317,7 @@ footer.site a { color: var(--smoke); }
             <p><span class="p">$</span> cat now.txt</p>
             <p>Building tools with Claude Code and studying for CompTIA Security+.</p>
             <p><span class="p">$</span> ls projects/</p>
-            <p><span class="s">ai-second-brain/</span>  <span class="s">claude-session-saver/</span>  <span class="s">store-api/</span>  <span class="s">this-site/</span></p>
+            <p><span class="s">home-soc-lab/</span>  <span class="s">ai-second-brain/</span>  <span class="s">claude-session-saver/</span>  <span class="s">store-api/</span>  <span class="s">this-site/</span></p>
             <p class="d"># Type a command below, or tap one. Try: help</p>
           </div>
           <form class="term-input" id="term-form" autocomplete="off">
@@ -336,7 +337,7 @@ footer.site a { color: var(--smoke); }
 
       <dl class="facts-strip" aria-label="At a glance">
         <div><dt>Looking for</dt><dd>IT support, AI automation, junior security analyst</dd></div>
-        <div><dt>Strongest proof</dt><dd>Open-source tool: 25 tests, CI on 3 OSes</dd></div>
+        <div><dt>Strongest proof</dt><dd>Home SOC: quarantines malware in ~2 s, blocks bad IPs in ~6 s</dd></div>
         <div><dt>Based in</dt><dd>Alabama, US · Central Time</dd></div>
         <div><dt>Work style</dt><dd>Remote, hybrid or on-site</dd></div>
       </dl>
@@ -349,10 +350,64 @@ footer.site a { color: var(--smoke); }
       <h2>Case studies</h2>
       <p class="intro">Each one is a real system I built and use. Claude Code is my pair programmer: I set the goal, read the code it writes, and test until it works.</p>
 
-      <article class="case spot">
+      <article class="case spot" id="home-soc">
         <div class="case-head">
           <div>
-            <span class="case-num">Case 01 · AI agent workflow</span>
+            <span class="case-num">Case 01 · Security operations</span>
+            <h3>A home SOC that catches, blocks and cleans up threats</h3>
+            <p class="case-sub">My own small security operations center, running on my laptop. It watches the PC, decides what is malicious and responds on its own, like a lightweight McAfee that I built, tested and can explain line by line.</p>
+          </div>
+          <div class="tags"><span class="tag">Wazuh SIEM</span><span class="tag">Sysmon</span><span class="tag">YARA</span><span class="tag">VirusTotal</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">Docker / WSL2</span><span class="tag">PowerShell</span></div>
+        </div>
+
+        <div class="stats" aria-label="Project stats">
+          <div><b>~2 s</b><small>to quarantine a bad file</small></div>
+          <div><b>~6 s</b><small>to block a malicious IP</small></div>
+          <div><b>17,700+</b><small>known-bad IPs tracked daily</small></div>
+          <div><b>300+</b><small>alerts triaged, 0 attacks</small></div>
+          <div><b>0</b><small>default passwords left</small></div>
+        </div>
+
+        <div class="case-grid">
+          <div>
+            <h4>Problem</h4>
+            <p>Security teams want proof that you can run a SIEM, not just name one. I wanted a real system I could attack safely, watch and tune, the way a SOC analyst does every day.</p>
+          </div>
+          <div>
+            <h4>What it does</h4>
+            <ul>
+              <li><b>Locks away bad files in about 2 seconds</b>, and can restore them (YARA rules + VirusTotal's 66 antivirus engines)</li>
+              <li><b>Blocks bad IPs in Windows Firewall in about 6 seconds</b>, using threat-intel feeds refreshed every morning</li>
+              <li><b>Warns about ransomware</b>: ransom notes, encrypted files, sudden bursts of file changes</li>
+              <li><b>Runs a full scan every week</b> and <b>shows Windows pop-ups</b> when it acts</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Result</h4>
+            <ul>
+              <li>Every detection is mapped to MITRE ATT&amp;CK and proven by a safe test script</li>
+              <li>Triaged 300+ alerts on day one: no attacks, and 223 false alarms cut with narrow tuning rules</li>
+              <li>Replaced the vendor's default admin and API passwords, then confirmed the old ones were rejected</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="code">
+          <div class="code-bar"><span>terminal · quarantine test</span><a href="https://github.com/ChanceHart/home-soc-lab" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+<pre><code><span class="k">$</span> make-test-file.ps1
+<span class="s">Created downloads\homelab-yara-test.txt</span>
+<span class="d"># about 2 seconds later</span>
+<span class="s">homelab-av: QUARANTINED reason="YARA: HomeLab_Test_Marker"</span>
+<span class="s">Alert (level 12): malicious file quarantined   T1204.002</span>
+<span class="k">$</span> restore-quarantine.ps1 -Id 076eebb52a50
+<span class="s">Restored downloads\homelab-yara-test.txt</span></code></pre>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-head">
+          <div>
+            <span class="case-num">Case 02 · AI agent workflow</span>
             <h3>An AI agent that remembers every session</h3>
             <p class="case-sub">My notes system in Obsidian, run by Claude Code. Every work session starts where the last one stopped, on any device.</p>
           </div>
@@ -377,7 +432,7 @@ footer.site a { color: var(--smoke); }
             <ul>
               <li><b>Privacy:</b> the hook saves the conversation only. Tool output and system messages are left out.</li>
               <li><b>Safe writes:</b> it writes to a temp file and then swaps it in, so cloud sync never picks up a half-written note.</li>
-              <li><b>Open source:</b> I published it for anyone to use. <a href="#session-saver">See Case 02</a>.</li>
+              <li><b>Open source:</b> I published it for anyone to use. <a href="#session-saver">See Case 03</a>.</li>
             </ul>
           </div>
         </div>
@@ -416,7 +471,7 @@ footer.site a { color: var(--smoke); }
       <article class="case" id="session-saver">
         <div class="case-head">
           <div>
-            <span class="case-num">Case 02 · Open-source tool</span>
+            <span class="case-num">Case 03 · Open-source tool</span>
             <h3>claude-session-saver: shipping it for everyone</h3>
             <p class="case-sub">I turned the hook from Case 01 into a public tool anyone can install with one command, with tests, automated CI on three operating systems, and versioned releases.</p>
           </div>
@@ -469,7 +524,7 @@ footer.site a { color: var(--smoke); }
       <article class="case">
         <div class="case-head">
           <div>
-            <span class="case-num">Case 03 · API integration + web</span>
+            <span class="case-num">Case 04 · API integration + web</span>
             <h3>Running a store through an AI agent and an API</h3>
             <p class="case-sub">My e-commerce brand, Ordelle. I connected Claude to Shopify, so the agent does the admin work through the API instead of clicking through screens.</p>
           </div>
@@ -516,7 +571,7 @@ footer.site a { color: var(--smoke); }
       <article class="case">
         <div class="case-head">
           <div>
-            <span class="case-num">Case 04 · This site</span>
+            <span class="case-num">Case 05 · This site</span>
             <h3>The page you're reading</h3>
             <p class="case-sub">Built with Claude Code: hand-written HTML, CSS and JavaScript, with no framework and no tracking. The design follows Twingate's published design system.</p>
           </div>
@@ -566,14 +621,14 @@ footer.site a { color: var(--smoke); }
           <ul><li>Troubleshooting</li><li>Basic IT support</li><li>Office software and data systems</li><li>Helping users by phone and in person</li></ul>
         </div>
         <div class="skill">
-          <h3>Data and security habits</h3>
-          <p>I've been trusted with sensitive data.</p>
-          <ul><li>Client health and financial records</li><li>Payment and deposit handling</li><li>Accurate CRM data</li><li>Sharing only the data that's needed</li></ul>
+          <h3>Security operations</h3>
+          <p>I run my own home SOC, and I've been trusted with sensitive data.</p>
+          <ul><li>Wazuh SIEM, Sysmon and alert triage</li><li>YARA, VirusTotal and threat-intel feeds</li><li>Detections mapped to MITRE ATT&amp;CK</li><li>Client health and financial records handled safely</li></ul>
         </div>
       </div>
 
       <div class="stack" aria-label="Tools I use">
-        <span class="chip">Claude Code</span><span class="chip">Claude</span><span class="chip">MCP</span><span class="chip">Python</span><span class="chip">HTML / CSS / JS</span><span class="chip">GraphQL</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">unittest</span><span class="chip">Shopify Liquid</span><span class="chip">JSON</span><span class="chip">Windows</span><span class="chip">Obsidian</span><span class="chip">CRM systems</span><span class="chip">Microsoft Office</span>
+        <span class="chip">Wazuh SIEM</span><span class="chip">Sysmon</span><span class="chip">YARA</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">Docker</span><span class="chip">WSL2</span><span class="chip">Claude Code</span><span class="chip">Claude</span><span class="chip">MCP</span><span class="chip">Python</span><span class="chip">HTML / CSS / JS</span><span class="chip">GraphQL</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">unittest</span><span class="chip">Shopify Liquid</span><span class="chip">JSON</span><span class="chip">Windows</span><span class="chip">Obsidian</span><span class="chip">CRM systems</span><span class="chip">Microsoft Office</span>
       </div>
     </div>
   </section>
@@ -600,6 +655,8 @@ footer.site a { color: var(--smoke); }
             <h3>AI Automation Developer (Independent)</h3>
             <p class="org">Self-employed · Remote</p>
             <ul>
+              <li>Built a home security operations center (<a href="#home-soc">home-soc-lab</a>): Wazuh SIEM on Docker/WSL2 with Sysmon; locks away bad files in about 2 seconds and can restore them (YARA + VirusTotal), blocks bad IPs in Windows Firewall in about 6 seconds from daily threat intel, warns about ransomware, runs a weekly full scan and shows Windows pop-ups.</li>
+              <li>Triaged 300+ alerts with no attacks found, cut 223 false alarms with narrow tuning rules, and mapped every detection to MITRE ATT&amp;CK with a safe test.</li>
               <li>Built and open-sourced <a href="#session-saver">claude-session-saver</a>: a Python CLI that gives Claude Code a memory, with secret redaction, 25 unit tests and GitHub Actions CI on Windows, macOS and Linux.</li>
               <li>Connected Claude to the Shopify Admin GraphQL API through MCP; created 23 products and 9 auto-updating collections and wrote Python scripts that build the store theme.</li>
               <li>Built and shipped this portfolio on GitHub Pages: hand-coded HTML, CSS and JavaScript with a strict Content Security Policy and no trackers.</li>
@@ -742,23 +799,25 @@ footer.site a { color: var(--smoke); }
         '<span class="k">ai</span>       Claude Code, AI agents, MCP, hooks, scheduled tasks',
         '<span class="k">code</span>     Python (basic), HTML/CSS/JS, GraphQL, JSON',
         '<span class="k">it</span>       troubleshooting, user support, office and data systems',
-        '<span class="k">security</span> sensitive data handling, sharing only what\'s needed',
+        '<span class="k">security</span> Wazuh SIEM, Sysmon, YARA, VirusTotal, threat intel, MITRE ATT&amp;CK, alert triage',
+        '<span class="k">data</span>     sensitive data handling, sharing only what\'s needed',
         '<span class="k">training</span> CompTIA Security+ (SY0-701), in progress, exam Jan 2027'
       ];
     },
     projects: function () {
       return [
-        '01 <a href="#work">ai-second-brain</a>       Python hook + scheduled AI reviews',
-        '02 <a href="#session-saver">claude-session-saver</a>  open source · 25 tests · CI · <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">github ↗</a>',
-        '03 <a href="#work">store-api</a>         Claude → MCP → Shopify GraphQL API',
-        '04 <a href="#work">this-site</a>             plain HTML/CSS/JS, no trackers'
+        '01 <a href="#home-soc">home-soc-lab</a>          Wazuh SIEM · quarantine ~2 s · IP block ~6 s · <a href="https://github.com/ChanceHart/home-soc-lab" target="_blank" rel="noopener">github ↗</a>',
+        '02 <a href="#work">ai-second-brain</a>       Python hook + scheduled AI reviews',
+        '03 <a href="#session-saver">claude-session-saver</a>  open source · 25 tests · CI · <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">github ↗</a>',
+        '04 <a href="#work">store-api</a>         Claude → MCP → Shopify GraphQL API',
+        '05 <a href="#work">this-site</a>             plain HTML/CSS/JS, no trackers'
       ];
     },
     contact: function () { return ['email    <span class="s">' + EMAIL + '</span>', 'linkedin <a href="https://www.linkedin.com/in/chance-hart-ai" target="_blank" rel="noopener">linkedin.com/in/chance-hart-ai</a>']; },
     resume: function () { return ['resume  <a href="https://chancehart.github.io/resume/" target="_blank" rel="noopener">chancehart.github.io/resume</a>  (PDF download on the page)']; },
     security: function () { return ['no cookies · no analytics · no third-party scripts', 'only personal data shown: one email address']; },
-    ls: function () { return ['<span class="s">ai-second-brain/</span>  <span class="s">claude-session-saver/</span>  <span class="s">store-api/</span>  <span class="s">this-site/</span>']; },
-    github: function () { return ['<a href="https://github.com/ChanceHart" target="_blank" rel="noopener">github.com/ChanceHart</a>', 'featured: <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">claude-session-saver</a>  v1.1.1 · 25 tests · CI']; }
+    ls: function () { return ['<span class="s">home-soc-lab/</span>  <span class="s">ai-second-brain/</span>  <span class="s">claude-session-saver/</span>  <span class="s">store-api/</span>  <span class="s">this-site/</span>']; },
+    github: function () { return ['<a href="https://github.com/ChanceHart" target="_blank" rel="noopener">github.com/ChanceHart</a>', 'featured: <a href="https://github.com/ChanceHart/home-soc-lab" target="_blank" rel="noopener">home-soc-lab</a>  Wazuh SIEM · auto-quarantine · IP blocking', 'also: <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">claude-session-saver</a>  v1.1.1 · 25 tests · CI']; }
   };
 
   function print(lines, cls) {
