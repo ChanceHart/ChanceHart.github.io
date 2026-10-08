@@ -337,7 +337,7 @@ footer.site a { color: var(--smoke); }
 
       <dl class="facts-strip" aria-label="At a glance">
         <div><dt>Looking for</dt><dd>IT support, AI automation, junior security analyst</dd></div>
-        <div><dt>Strongest proof</dt><dd>Home SOC: quarantines malware in ~2 s, blocks bad IPs in ~6 s</dd></div>
+        <div><dt>Strongest proof</dt><dd>Home SOC, always on in the cloud: quarantines malware in ~4 s, blocks bad IPs in ~6 s</dd></div>
         <div><dt>Based in</dt><dd>Alabama, US · Central Time</dd></div>
         <div><dt>Work style</dt><dd>Remote, hybrid or on-site</dd></div>
       </dl>
@@ -355,17 +355,17 @@ footer.site a { color: var(--smoke); }
           <div>
             <span class="case-num">Case 01 · Security operations</span>
             <h3>A home SOC that catches, blocks and cleans up threats</h3>
-            <p class="case-sub">My own small security operations center, running on my laptop. It watches the PC, decides what is malicious and responds on its own, like a lightweight McAfee that I built, tested and can explain line by line.</p>
+            <p class="case-sub">My own small security operations center, running 24/7 on Oracle Cloud ($0) and reachable only through my private Tailscale network. It watches my PC, decides what is malicious and responds on its own, like a lightweight McAfee that I built, tested and can explain line by line.</p>
           </div>
-          <div class="tags"><span class="tag">Wazuh SIEM</span><span class="tag">Sysmon</span><span class="tag">YARA</span><span class="tag">VirusTotal</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">Docker / WSL2</span><span class="tag">PowerShell</span></div>
+          <div class="tags"><span class="tag">Wazuh SIEM</span><span class="tag">Sysmon</span><span class="tag">YARA</span><span class="tag">VirusTotal</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">Docker</span><span class="tag">Oracle Cloud</span><span class="tag">Tailscale</span><span class="tag">PowerShell</span></div>
         </div>
 
         <div class="stats" aria-label="Project stats">
-          <div><b>~2 s</b><small>to quarantine a bad file</small></div>
+          <div><b>~4 s</b><small>to quarantine a bad file</small></div>
           <div><b>~6 s</b><small>to block a malicious IP</small></div>
-          <div><b>17,700+</b><small>known-bad IPs tracked daily</small></div>
+          <div><b>17,000+</b><small>known-bad IPs tracked daily</small></div>
           <div><b>300+</b><small>alerts triaged, 0 attacks</small></div>
-          <div><b>0</b><small>default passwords left</small></div>
+          <div><b>0</b><small>ports open to the internet</small></div>
         </div>
 
         <div class="case-grid">
@@ -376,7 +376,7 @@ footer.site a { color: var(--smoke); }
           <div>
             <h4>What it does</h4>
             <ul>
-              <li><b>Locks away bad files in about 2 seconds</b>, and can restore them (YARA rules + VirusTotal's 66 antivirus engines)</li>
+              <li><b>Locks away bad files in about 4 seconds</b>, and can restore them (YARA rules + VirusTotal's 66 antivirus engines)</li>
               <li><b>Blocks bad IPs in Windows Firewall in about 6 seconds</b>, using threat-intel feeds refreshed every morning</li>
               <li><b>Warns about ransomware</b>: ransom notes, encrypted files, sudden bursts of file changes</li>
               <li><b>Runs a full scan every week</b> and <b>shows Windows pop-ups</b> when it acts</li>
@@ -388,6 +388,7 @@ footer.site a { color: var(--smoke); }
               <li>Every detection is mapped to MITRE ATT&amp;CK and proven by a safe test script</li>
               <li>Triaged 300+ alerts on day one: no attacks, and 223 false alarms cut with narrow tuning rules</li>
               <li>Replaced the vendor's default admin and API passwords, then confirmed the old ones were rejected</li>
+              <li>Pen-tested it myself: a full 65,535-port scan finds nothing open to the internet; fixed every finding (SSH locked to Tailscale, containers blocked from the cloud metadata service, secrets root-only)</li>
             </ul>
           </div>
         </div>
@@ -396,7 +397,7 @@ footer.site a { color: var(--smoke); }
           <div class="code-bar"><span>terminal · quarantine test</span><a href="https://github.com/ChanceHart/home-soc-lab" target="_blank" rel="noopener">View on GitHub ↗</a></div>
 <pre><code><span class="k">$</span> make-test-file.ps1
 <span class="s">Created downloads\homelab-yara-test.txt</span>
-<span class="d"># about 2 seconds later</span>
+<span class="d"># about 4 seconds later</span>
 <span class="s">homelab-av: QUARANTINED reason="YARA: HomeLab_Test_Marker"</span>
 <span class="s">Alert (level 12): malicious file quarantined   T1204.002</span>
 <span class="k">$</span> restore-quarantine.ps1 -Id 076eebb52a50
@@ -628,7 +629,7 @@ footer.site a { color: var(--smoke); }
       </div>
 
       <div class="stack" aria-label="Tools I use">
-        <span class="chip">Wazuh SIEM</span><span class="chip">Sysmon</span><span class="chip">YARA</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">Docker</span><span class="chip">WSL2</span><span class="chip">Claude Code</span><span class="chip">Claude</span><span class="chip">MCP</span><span class="chip">Python</span><span class="chip">HTML / CSS / JS</span><span class="chip">GraphQL</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">unittest</span><span class="chip">Shopify Liquid</span><span class="chip">JSON</span><span class="chip">Windows</span><span class="chip">Obsidian</span><span class="chip">CRM systems</span><span class="chip">Microsoft Office</span>
+        <span class="chip">Wazuh SIEM</span><span class="chip">Sysmon</span><span class="chip">YARA</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">Docker</span><span class="chip">Oracle Cloud</span><span class="chip">Tailscale</span><span class="chip">Claude Code</span><span class="chip">Claude</span><span class="chip">MCP</span><span class="chip">Python</span><span class="chip">HTML / CSS / JS</span><span class="chip">GraphQL</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">unittest</span><span class="chip">Shopify Liquid</span><span class="chip">JSON</span><span class="chip">Windows</span><span class="chip">Obsidian</span><span class="chip">CRM systems</span><span class="chip">Microsoft Office</span>
       </div>
     </div>
   </section>
@@ -655,8 +656,8 @@ footer.site a { color: var(--smoke); }
             <h3>AI Automation Developer (Independent)</h3>
             <p class="org">Self-employed · Remote</p>
             <ul>
-              <li>Built a home security operations center (<a href="#home-soc">home-soc-lab</a>): Wazuh SIEM on Docker/WSL2 with Sysmon; locks away bad files in about 2 seconds and can restore them (YARA + VirusTotal), blocks bad IPs in Windows Firewall in about 6 seconds from daily threat intel, warns about ransomware, runs a weekly full scan and shows Windows pop-ups.</li>
-              <li>Triaged 300+ alerts with no attacks found, cut 223 false alarms with narrow tuning rules, and mapped every detection to MITRE ATT&amp;CK with a safe test.</li>
+              <li>Built a home security operations center (<a href="#home-soc">home-soc-lab</a>): Wazuh SIEM running 24/7 on Oracle Cloud behind Tailscale, with Sysmon on my PC; quarantines bad files in about 4 seconds (YARA + VirusTotal), blocks bad IPs in about 6 seconds from daily threat intel and warns about ransomware.</li>
+              <li>Triaged 300+ alerts (no attacks; 223 false alarms tuned out), mapped every detection to MITRE ATT&amp;CK with a safe test, and pen-tested the server: zero ports open to the internet.</li>
               <li>Built and open-sourced <a href="#session-saver">claude-session-saver</a>: a Python CLI that gives Claude Code a memory, with secret redaction, 25 unit tests and GitHub Actions CI on Windows, macOS and Linux.</li>
               <li>Connected Claude to the Shopify Admin GraphQL API through MCP; created 23 products and 9 auto-updating collections and wrote Python scripts that build the store theme.</li>
               <li>Built and shipped this portfolio on GitHub Pages: hand-coded HTML, CSS and JavaScript with a strict Content Security Policy and no trackers.</li>
@@ -799,14 +800,15 @@ footer.site a { color: var(--smoke); }
         '<span class="k">ai</span>       Claude Code, AI agents, MCP, hooks, scheduled tasks',
         '<span class="k">code</span>     Python (basic), HTML/CSS/JS, GraphQL, JSON',
         '<span class="k">it</span>       troubleshooting, user support, office and data systems',
-        '<span class="k">security</span> Wazuh SIEM, Sysmon, YARA, VirusTotal, threat intel, MITRE ATT&amp;CK, alert triage',
+        '<span class="k">security</span> Wazuh SIEM, Sysmon, YARA, VirusTotal, threat intel, MITRE ATT&amp;CK, alert triage, pen testing',
+        '<span class="k">cloud</span>    Oracle Cloud (OCI), Tailscale/WireGuard, Linux hardening, Docker',
         '<span class="k">data</span>     sensitive data handling, sharing only what\'s needed',
         '<span class="k">training</span> CompTIA Security+ (SY0-701), in progress, exam Jan 2027'
       ];
     },
     projects: function () {
       return [
-        '01 <a href="#home-soc">home-soc-lab</a>          Wazuh SIEM · quarantine ~2 s · IP block ~6 s · <a href="https://github.com/ChanceHart/home-soc-lab" target="_blank" rel="noopener">github ↗</a>',
+        '01 <a href="#home-soc">home-soc-lab</a>          Wazuh SIEM · 24/7 cloud · quarantine ~4 s · IP block ~6 s · <a href="https://github.com/ChanceHart/home-soc-lab" target="_blank" rel="noopener">github ↗</a>',
         '02 <a href="#work">ai-second-brain</a>       Python hook + scheduled AI reviews',
         '03 <a href="#session-saver">claude-session-saver</a>  open source · 25 tests · CI · <a href="https://github.com/ChanceHart/claude-session-saver" target="_blank" rel="noopener">github ↗</a>',
         '04 <a href="#work">store-api</a>         Claude → MCP → Shopify GraphQL API',
